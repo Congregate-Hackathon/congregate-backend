@@ -17,64 +17,64 @@ const schedule = require('node-schedule');
 var ziti = require('ziti-sdk-nodejs');
 
 
-// const ziti_init = async (identity) => {
-//     return new Promise((resolve) => {
-//         ziti.ziti_init(identity, () => {
-//             resolve();
-//         });
-//     });
-// };
+const ziti_init = async (identity) => {
+    return new Promise((resolve) => {
+        ziti.ziti_init(identity, () => {
+            resolve();
+        });
+    });
+};
 
 
-// const ziti_service_available = (service) => {
-//     return new Promise((resolve) => {
-//         ziti.ziti_service_available(service, (status) => {
-//             resolve(status);
-//         });
-//     });
-// };
+const ziti_service_available = (service) => {
+    return new Promise((resolve) => {
+        ziti.ziti_service_available(service, (status) => {
+            resolve(status);
+        });
+    });
+};
 
-// function ziti_dial(service) {
-//     return new Promise((resolve, reject) => {
-//         ziti.ziti_dial(
-//             service,
-//             (conn) => {
-//                 resolve(conn);
-//             },
-//             (data) => {
-//                 // Do something with data...
-//             },
-//         );
-//     });
-// }
+function ziti_dial(service) {
+    return new Promise((resolve, reject) => {
+        ziti.ziti_dial(
+            service,
+            (conn) => {
+                resolve(conn);
+            },
+            (data) => {
+                // Do something with data...
+            },
+        );
+    });
+}
 
-// const ziti_write = (conn, data) => {
-//     return new Promise((resolve) => {
-//         ziti.ziti_write(conn, data, () => {
-//             resolve();
-//         });
-//     });
-// };
+const ziti_write = (conn, data) => {
+    return new Promise((resolve) => {
+        ziti.ziti_write(conn, data, () => {
+            resolve();
+        });
+    });
+};
 
 
-// (async () => {
+(async () => {
 
-//     await ziti_init("./nodejs-hackathon.jwt");
+    await ziti_init("./nodejs-hackathon.jwt");
 
-//     let status = await ziti_service_available("nodejs-service-hackathon");
+    let status = await ziti_service_available("nodejs-service-hackathon");
 
-//     if (status === 0) {
+    if (status === 0) {
 
-//         const conn = await ziti_dial("nodejs-service-hackathon");
+        const conn = await ziti_dial("nodejs-service-hackathon");
 
-//         let data = SOME_KIND_OF_DATA;
+        let data = SOME_KIND_OF_DATA;
 
-//         let buffer = Buffer.from(data);
+        let buffer = Buffer.from(data);
 
-//         await ziti_write(conn, buffer);
-//     }
+        await ziti_write(conn, buffer);
+    }
 
-// })();
+})();
 
 app.use(express.json());
 app.use(cors());
